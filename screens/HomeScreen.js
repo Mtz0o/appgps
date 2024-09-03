@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+<<<<<<< HEAD
 import { View, Text, TextInput, Pressable, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import * as Location from 'expo-location';
 import { createRoute } from '../services/routes.js';
@@ -10,13 +11,27 @@ const routeImage = Asset.fromModule(require('../assets/Route2.png')).uri;
 
 export default function HomeScreen({ navigation }) {
   const [name, setName] = useState('');
+=======
+import { View, Text, TextInput, Pressable, StyleSheet } from 'react-native';
+import * as Location from 'expo-location';
+import { createRoute } from '../services/routes.js';
+import { FontAwesome } from '@expo/vector-icons';
+
+export default function HomeScreen({ navigation }) {
+  const [name, setName] = useState('');
+  const [date, setDate] = useState('');
+>>>>>>> 3d0f2051d2f998eaaa97e39d071b1f0556e21acf
   const [isRecording, setIsRecording] = useState(false);
   const [timer, setTimer] = useState(0);
   const [path, setPath] = useState([]);
   const timerRef = useRef(null);
 
   useEffect(() => {
+<<<<<<< HEAD
     return () => clearInterval(timerRef.current);
+=======
+    return () => clearInterval(timerRef.current); // Cleanup on unmount
+>>>>>>> 3d0f2051d2f998eaaa97e39d071b1f0556e21acf
   }, []);
 
   const formatTime = (time) => {
@@ -63,9 +78,16 @@ export default function HomeScreen({ navigation }) {
     setIsRecording(false);
     stopTimer();
 
+<<<<<<< HEAD
     await createRoute(name, path, formatTime(timer));
     setPath([]);
     setName('');
+=======
+    await createRoute(name, date, path, formatTime(timer));
+    setPath([]);
+    setName('');
+    setDate('');
+>>>>>>> 3d0f2051d2f998eaaa97e39d071b1f0556e21acf
   };
 
   const handlePress = () => {
@@ -78,6 +100,7 @@ export default function HomeScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
+<<<<<<< HEAD
       <Image source={{ uri: routeImage }} style={styles.image} />
       <TextInput
         style={styles.input}
@@ -89,6 +112,24 @@ export default function HomeScreen({ navigation }) {
       <TouchableOpacity style={styles.button} onPress={handlePress}>
         <FontAwesome name={isRecording ? 'pause' : 'play'} size={32} color="white" />
       </TouchableOpacity>
+=======
+      <TextInput
+        style={styles.input}
+        placeholder="Nome da Rota"
+        value={name}
+        onChangeText={setName}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Data (YYYY-MM-DD)"
+        value={date}
+        onChangeText={setDate}
+      />
+      <Text style={styles.timer}>{formatTime(timer)}</Text>
+      <Pressable style={styles.button} onPress={handlePress}>
+        <FontAwesome name={isRecording ? 'pause' : 'play'} size={24} color="white" />
+      </Pressable>
+>>>>>>> 3d0f2051d2f998eaaa97e39d071b1f0556e21acf
     </View>
   );
 }
@@ -98,6 +139,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+<<<<<<< HEAD
     padding: 20,
     backgroundColor: '#f5f5f5', // Fundo claro
   },
@@ -135,5 +177,27 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.1,
     shadowRadius: 10,
+=======
+    padding: 16,
+  },
+  input: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    marginBottom: 12,
+    paddingHorizontal: 8,
+    width: '100%',
+  },
+  timer: {
+    fontSize: 32,
+    marginBottom: 20,
+  },
+  button: {
+    backgroundColor: 'blue',
+    padding: 16,
+    borderRadius: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+>>>>>>> 3d0f2051d2f998eaaa97e39d071b1f0556e21acf
   },
 });

@@ -1,7 +1,12 @@
 {
   "expo": {
+<<<<<<< HEAD
     "name": "app-gps",
     "slug": "app-gps",
+=======
+    "name": "my-app",
+    "slug": "my-app",
+>>>>>>> 3d0f2051d2f998eaaa97e39d071b1f0556e21acf
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -29,7 +34,11 @@
     },
     "extra": {
       "eas": {
+<<<<<<< HEAD
         "projectId": "b119c69c-8247-4ae2-86cf-08ffc58d3570"
+=======
+        "projectId": "0c9d07c8-a365-4f13-9e91-5ea9cb125be1"
+>>>>>>> 3d0f2051d2f998eaaa97e39d071b1f0556e21acf
       }
     },
     "runtimeVersion": {

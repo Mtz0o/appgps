@@ -1,10 +1,18 @@
 // src/services/routeService.js
 import Api from "../Api.js";
 
+<<<<<<< HEAD
 export const createRoute = async (name, path, duration) => {
   try {
     const response = await Api.post("/classes/Rotas", {
       nome: name,
+=======
+export const createRoute = async (name, date, path, duration) => {
+  try {
+    const response = await Api.post("/classes/Rotas", {
+      nome: name,
+      data: date,
+>>>>>>> 3d0f2051d2f998eaaa97e39d071b1f0556e21acf
       caminho: path,
       duracao: duration,
     });

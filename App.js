@@ -28,7 +28,11 @@ export default function App() {
         screenOptions={{
           tabBarStyle: {
             backgroundColor: "#fff",
+<<<<<<< HEAD
             height: 70,
+=======
+            height: 60,
+>>>>>>> 3d0f2051d2f998eaaa97e39d071b1f0556e21acf
             paddingTop: 10,
             paddingBottom: 10,
           },

@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 import React, { useState, useCallback, useEffect } from "react";
 import { View, Text, FlatList, Pressable, StyleSheet, Modal,TouchableOpacity, Animated, Easing 
 } from "react-native";
+=======
+import React, { useEffect, useState, useCallback } from "react";
+import { View, Text, FlatList, Pressable, StyleSheet, Modal, TouchableOpacity } from "react-native";
+>>>>>>> 3d0f2051d2f998eaaa97e39d071b1f0556e21acf
 import { useFocusEffect } from "@react-navigation/native";
 import { getRoutes, deleteRoute } from "../services/routes.js";
 import { FontAwesome } from "@expo/vector-icons";
@@ -9,8 +14,11 @@ export default function ListarRotasScreen({ navigation }) {
   const [routes, setRoutes] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
   const [routeToDelete, setRouteToDelete] = useState(null);
+<<<<<<< HEAD
   const [opacity] = useState(new Animated.Value(0)); // Estado para a opacidade do fundo
   const [modalY] = useState(new Animated.Value(300)); // Estado para a posição Y do modal
+=======
+>>>>>>> 3d0f2051d2f998eaaa97e39d071b1f0556e21acf
 
   const fetchRoutes = async () => {
     try {
@@ -29,6 +37,7 @@ export default function ListarRotasScreen({ navigation }) {
       fetchRoutes();
     }, [])
   );
+<<<<<<< HEAD
   
   function formatarData(data) {
     const dataObj = new Date(data);
@@ -37,13 +46,20 @@ export default function ListarRotasScreen({ navigation }) {
     const ano = dataObj.getFullYear();
     return `${dia}/${mes}/${ano}`;
   }
+=======
+>>>>>>> 3d0f2051d2f998eaaa97e39d071b1f0556e21acf
 
   const handleDelete = async () => {
     if (routeToDelete) {
       try {
         await deleteRoute(routeToDelete);
         setRoutes(routes.filter((route) => route.objectId !== routeToDelete));
+<<<<<<< HEAD
         closeDeleteModal();
+=======
+        setModalVisible(false);
+        setRouteToDelete(null);
+>>>>>>> 3d0f2051d2f998eaaa97e39d071b1f0556e21acf
       } catch (error) {
         console.error("Erro ao deletar a rota:", error);
       }
@@ -53,6 +69,7 @@ export default function ListarRotasScreen({ navigation }) {
   const openDeleteModal = (id) => {
     setRouteToDelete(id);
     setModalVisible(true);
+<<<<<<< HEAD
     animateModalIn();
   };
 
@@ -95,6 +112,13 @@ export default function ListarRotasScreen({ navigation }) {
     ]).start(() => {
       if (callback) callback();
     });
+=======
+  };
+
+  const closeDeleteModal = () => {
+    setModalVisible(false);
+    setRouteToDelete(null);
+>>>>>>> 3d0f2051d2f998eaaa97e39d071b1f0556e21acf
   };
 
   const renderItem = ({ item }) => (
@@ -103,14 +127,21 @@ export default function ListarRotasScreen({ navigation }) {
       onPress={() =>
         navigation.navigate("ExibirCaminho", {
           name: item.nome,
+<<<<<<< HEAD
           path: item.caminho,
           duration: item.duracao,
           createdAt: item.createdAt
+=======
+          date: item.data,
+          path: item.caminho,
+          duration: item.duracao,
+>>>>>>> 3d0f2051d2f998eaaa97e39d071b1f0556e21acf
         })
       }
     >
       <View style={styles.rotaInfo}>
         <View style={styles.title}>
+<<<<<<< HEAD
         <Text style={styles.routeName} numberOfLines={1} ellipsizeMode="tail">
             {item.nome}
           </Text>
@@ -119,6 +150,14 @@ export default function ListarRotasScreen({ navigation }) {
         <Text style={styles.routeDetails}>Data: {formatarData(item.createdAt)}</Text>
         <Text style={styles.routeDetails}>Duração: {item.duracao}</Text>
       </View>
+=======
+          <Text style={styles.routeName}>{item.nome}</Text>
+        </View>
+        <View style={styles.content}>
+          <Text style={styles.routeDetails}>Duração: {item.duracao}</Text>
+          <Text style={styles.routeDetails}>Data: {item.data}</Text>
+        </View>
+>>>>>>> 3d0f2051d2f998eaaa97e39d071b1f0556e21acf
       </View>
       <Pressable style={styles.iconButton} onPress={() => openDeleteModal(item.objectId)}>
         <FontAwesome name="trash" size={24} color="red" />
@@ -138,6 +177,7 @@ export default function ListarRotasScreen({ navigation }) {
         visible={modalVisible}
         onRequestClose={closeDeleteModal}
       >
+<<<<<<< HEAD
         <View style={styles.modalBackground}>
           <Animated.View style={[styles.opacityBackground, { opacity }]} />
           <Animated.View style={[styles.modalContainer, { transform: [{ translateY: modalY }] }]}>
@@ -154,6 +194,21 @@ export default function ListarRotasScreen({ navigation }) {
               </View>
             </View>
           </Animated.View>
+=======
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalTitle}>Confirmar Exclusão</Text>
+            <Text style={styles.modalMessage}>Você tem certeza que deseja excluir esta rota?</Text>
+            <View style={styles.modalButtons}>
+              <TouchableOpacity style={styles.cancelButton} onPress={closeDeleteModal}>
+                <Text style={styles.cancelButtonText}>Cancelar</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.deleteButton} onPress={handleDelete}>
+                <Text style={styles.deleteButtonText}>Excluir</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+>>>>>>> 3d0f2051d2f998eaaa97e39d071b1f0556e21acf
         </View>
       </Modal>
     </View>
@@ -203,6 +258,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+<<<<<<< HEAD
   modalBackground: {
     flex: 1,
     justifyContent: "center",
@@ -218,11 +274,21 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
   modalContainer: {
+=======
+  modalContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+  modalContent: {
+>>>>>>> 3d0f2051d2f998eaaa97e39d071b1f0556e21acf
     width: 300,
     padding: 20,
     backgroundColor: "white",
     borderRadius: 10,
     alignItems: "center",
+<<<<<<< HEAD
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -234,6 +300,8 @@ const styles = StyleSheet.create({
   },
   modalContent: {
     alignItems: "center",
+=======
+>>>>>>> 3d0f2051d2f998eaaa97e39d071b1f0556e21acf
   },
   modalTitle: {
     fontSize: 20,
@@ -243,7 +311,10 @@ const styles = StyleSheet.create({
   modalMessage: {
     fontSize: 16,
     marginBottom: 20,
+<<<<<<< HEAD
     textAlign: "center",
+=======
+>>>>>>> 3d0f2051d2f998eaaa97e39d071b1f0556e21acf
   },
   modalButtons: {
     flexDirection: "row",
@@ -262,6 +333,13 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
   },
+<<<<<<< HEAD
+=======
+  deleteButtonText: {
+    color: "white",
+    fontWeight: "bold",
+  },
+>>>>>>> 3d0f2051d2f998eaaa97e39d071b1f0556e21acf
   deleteButton: {
     backgroundColor: "red",
     padding: 10,
@@ -270,8 +348,13 @@ const styles = StyleSheet.create({
     flex: 1,
     marginLeft: 5,
   },
+<<<<<<< HEAD
   deleteButtonText: {
     color: "white",
     fontWeight: "bold",
   },
 });
+=======
+});
+
+>>>>>>> 3d0f2051d2f998eaaa97e39d071b1f0556e21acf

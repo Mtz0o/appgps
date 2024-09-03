@@ -9,6 +9,7 @@
       "android": {
         "buildType": "apk"
       },
+<<<<<<< HEAD
       "ios": {
         "simulator": true
       }
@@ -29,6 +30,16 @@
       "ios": {
         "enterpriseProvisioning": "universal"
       }
+=======
+      "channel": "development"
+    },
+    "preview": {
+      "distribution": "internal",
+      "channel": "preview"
+    },
+    "production": {
+      "channel": "production"
+>>>>>>> 3d0f2051d2f998eaaa97e39d071b1f0556e21acf
     }
   },
   "submit": {
